@@ -4,6 +4,11 @@ require_relative 'db/config'
 require_relative 'lib/students_importer'
 require_relative 'app/models/teacher'
 
+desc "opens up console"
+task "console" do
+  exec "irb -r ./db/config"
+end
+
 desc "create the database"
 task "db:create" do
   touch 'db/ar-students.sqlite3'

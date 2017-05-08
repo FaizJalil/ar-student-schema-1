@@ -4,11 +4,17 @@ require_relative '../config'
 
 class CreateStudents < ActiveRecord::Migration
   def change
-    # HINT: checkout ActiveRecord::Migration.create_table
     create_table :students do |t|
+      [:first_name, :last_name, :gender, :email, :phone].each do |x|
+        t.string x
+      end
+      t.date :birthday
+      t.references :teacher # one-to-many
+      t.timestamps
+    end
 
-      # add columns that you would need for this table
-
+    create_table :teachers do |t|
+      t.string :name
       t.timestamps
     end
   end
